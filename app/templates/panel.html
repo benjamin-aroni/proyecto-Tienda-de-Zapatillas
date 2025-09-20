@@ -1,26 +1,20 @@
-<!doctype html>
-<html lang="es">
-<head>
-  <meta charset="utf-8">
-  <title>Panel</title>
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block title %}Panel{% endblock %}
+
+{% block content %}
   <h1>Panel privado</h1>
   <p>Hola, {{ user_name }} 👋</p>
 
-
   <h2>Zapatillas disponibles</h2>
-  <div style="display:flex; flex-wrap:wrap; gap:20px;">
+  <div class="grid">
     {% for z in productos %}
-      <div style="border:1px solid #ccc; padding:10px; width:200px;">
+      <div class="card">
+        <img src="{{ z.imagen_url }}" alt="{{ z.modelo }}">
         <h3>{{ z.modelo }}</h3>
         <p>Precio: ${{ z.precio }}</p>
         <p>Talla: {{ z.talla }}</p>
-        <img src="{{ z.imagen_url }}" alt="{{ z.modelo }}" style="max-width:100%;">
       </div>
     {% endfor %}
   </div>
-    <p><a href="{{ url_for('logout') }}">Salir</a></p>
-
-</body>
-</html>
+{% endblock %}

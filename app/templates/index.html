@@ -1,18 +1,18 @@
-<!doctype html>
-<html lang="es">
-<head>
-  <meta charset="utf-8">
-  <title>Inicio</title>
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
   <h1>Customer Relationship Management</h1>
+
   {% if user_name %}
-    <p>Hola, {{ user_name }} |
-       <a href="{{ url_for('panel') }}">Panel</a> |
-       <a href="{{ url_for('logout') }}">Salir</a>
+    <p>Hola, {{ user_name }} </p>
+    <p>
+      <a href="{{ url_for('panel') }}">Ir al Panel</a> | 
+      <a href="{{ url_for('logout') }}">Salir</a>
     </p>
   {% else %}
-    <p><a href="{{ url_for('login') }}">Iniciar sesión</a></p>
+    <p><a href="{{ url_for('login') }}">Iniciar sesión</a> o 
+       <a href="{{ url_for('register') }}">Registrarse</a></p>
   {% endif %}
-</body>
-</html>
+{% endblock %}
